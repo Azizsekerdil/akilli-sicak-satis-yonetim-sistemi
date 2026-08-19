@@ -23,7 +23,7 @@ python-multipart==0.0.32          # Apache-2.0 (path traversal + DoS fixes)
 
 # --- Data / ORM ------------------------------------------------------------
 SQLAlchemy==2.0.52                # MIT
-alembic==1.18.2                   # MIT
+alembic==1.19.1                   # MIT
 pydantic==2.13.4                  # MIT
 pydantic-settings==2.15.0         # MIT
 
