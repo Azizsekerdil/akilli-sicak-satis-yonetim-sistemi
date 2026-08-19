@@ -41,7 +41,7 @@ pandas==2.2.3                     # BSD-3-Clause
 
 # --- Reporting / export ----------------------------------------------------
 openpyxl==3.1.5                   # MIT
-reportlab==4.2.5                  # BSD-3-Clause
+reportlab==5.0.0                  # BSD-3-Clause
 
 # --- Optional (feature-detected at runtime; system works without them) -----
 # ortools==9.11.4210              # Apache-2.0 — exact VRP solver
