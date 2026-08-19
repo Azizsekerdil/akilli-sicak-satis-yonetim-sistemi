@@ -1,0 +1,487 @@
+{
+  "schema_version": "1.0",
+  "pack_key": "kvkk-core",
+  "version": "0.1.0-draft",
+  "status": "DRAFT",
+  "jurisdiction": "TR",
+  "regulation_code": "KVKK-6698",
+  "title_tr": "KVKK Çekirdek Kural Paketi (TASLAK)",
+  "title_en": "KVKK Core Rule Pack (DRAFT)",
+  "description_tr": "6698 sayılı Kanun'un yerleşik madde başlıklarından türetilmiş, makine tarafından değerlendirilebilir kontrol kümesi. BU PAKET TASLAKTIR VE ONAYLI DEĞİLDİR. Kurallar, kanun metninin kendisi değil; metnin başlıklarına dayanan operasyonel kontrollerdir. Her kural requires_human_review=true taşır; motor bu paketten asla otomatik COMPLIANT üretmez. Hukuki görüş yerine geçmez.",
+  "description_en": "Machine-evaluable control set derived from the well-established article headings of Law No. 6698. THIS PACK IS A DRAFT AND IS NOT APPROVED. The rules are operational controls informed by those headings, not the statutory text itself. Every rule carries requires_human_review=true, so the engine never returns an automatic COMPLIANT from this pack. Not a substitute for legal advice.",
+  "requires_human_review": true,
+  "retrieved_date": "2026-08-18",
+
+  "context_keys": [
+    "processes_personal_data",
+    "data_controller_in_turkey",
+    "processing_activities_inventoried",
+    "purposes_documented",
+    "data_minimisation_reviewed",
+    "field_level_inventory",
+    "retention_schedule_defined",
+    "retention_enforced_technically",
+    "accuracy_process_defined",
+    "legal_basis_recorded",
+    "legal_basis_per_activity",
+    "processes_special_category_data",
+    "special_category_condition_recorded",
+    "special_category_safeguards",
+    "privacy_notice_published",
+    "privacy_notice_delivered_at_collection",
+    "data_subject_request_channel",
+    "data_subject_request_log",
+    "security_measures_documented",
+    "encryption_at_rest",
+    "access_control_enforced",
+    "personal_data_stored_outside_turkey",
+    "audit_log_enabled",
+    "audit_log_tamper_evident",
+    "verbis_registration_required",
+    "verbis_registration_completed",
+    "verbis_exemption_documented"
+  ],
+
+  "legal_sources": [
+    {
+      "source_key": "kvkk-6698",
+      "version": "1",
+      "jurisdiction": "TR",
+      "regulation_code": "KVKK-6698",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "title_tr": "6698 sayılı Kişisel Verilerin Korunması Kanunu",
+      "title_en": "Law No. 6698 on the Protection of Personal Data",
+      "official_url": "https://www.mevzuat.gov.tr/",
+      "language": "tr",
+      "publication_date": "2016-04-07",
+      "effective_date": null,
+      "retrieved_date": "2026-08-18",
+      "notes_tr": "Yürürlük tarihi maddeye göre değişebilir ve bu pakette DOĞRULANMAMIŞTIR (UNKNOWN). Kanun metni indirilmediği için source_hash bir REFERENCE_FINGERPRINT'tir; resmî metnin özeti DEĞİLDİR. Denetleyici otoritenin kurumsal kaynağı: https://www.kvkk.gov.tr/ — güncel metin ve ikincil düzenlemeler için resmî kaynaklar insan tarafından doğrulanmalıdır.",
+      "notes_en": "The date of entry into force varies by article and is NOT VERIFIED in this pack (UNKNOWN). The statutory text was not retrieved, so source_hash is a REFERENCE_FINGERPRINT, NOT a digest of the official text. Supervisory authority site: https://www.kvkk.gov.tr/ — current text and secondary legislation must be verified by a human."
+    }
+  ],
+
+  "rules": [
+    {
+      "rule_id": "KVKK-04-01",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 4",
+      "title_tr": "İşleme amaçları belirli, açık ve kayıtlı olmalı",
+      "title_en": "Processing purposes must be specific, explicit and recorded",
+      "description_tr": "Genel ilkeler maddesi, kişisel verinin belirli, açık ve meşru amaçlar için işlenmesini öngörür. Bu kontrol, her işleme faaliyetinin envantere alınmış ve amacının yazılı olarak kayda geçmiş olmasını arar. Amacı yazılı olmayan bir faaliyetin ölçülülüğü de saklama süresi de tartışılamaz.",
+      "description_en": "The general principles require personal data to be processed for specified, explicit and legitimate purposes. This control looks for an inventory of processing activities in which each purpose is recorded in writing. Proportionality and retention cannot be argued for an activity whose purpose was never written down.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": null,
+      "applicability": {"field": "processes_personal_data", "op": "is_true"},
+      "condition": {
+        "all": [
+          {"field": "processing_activities_inventoried", "op": "is_true"},
+          {"field": "purposes_documented", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "purpose_register",
+          "kind": "DOCUMENT",
+          "optional": false,
+          "description_tr": "İşleme faaliyetleri ve amaçlarını gösteren kayıt",
+          "description_en": "Register of processing activities and their purposes"
+        }
+      ],
+      "notes_tr": "Kontrolün kapsamı yorumdur; madde metninin birebir karşılığı değildir."
+    },
+    {
+      "rule_id": "KVKK-04-02",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 4",
+      "title_tr": "Veri, amaçla bağlantılı ve ölçülü tutulmalı",
+      "title_en": "Data must be relevant, limited and proportionate to the purpose",
+      "description_tr": "Genel ilkeler, verinin işlendiği amaçla bağlantılı, sınırlı ve ölçülü olmasını arar. Bu kontrol iki şey ister: alan düzeyinde bir veri envanteri ve bu envanterin ölçülülük gözüyle gözden geçirilmiş olması. Envanteri olmayan bir sistemde 'gereğinden fazla veri toplamıyoruz' iddiası ölçülemez.",
+      "description_en": "The general principles require data to be relevant, limited and proportionate to the purpose. This control asks for two things: a field-level data inventory, and a documented proportionality review of that inventory. Without an inventory, the claim of collecting no more than necessary cannot be measured.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": null,
+      "applicability": {"field": "processes_personal_data", "op": "is_true"},
+      "condition": {
+        "all": [
+          {"field": "field_level_inventory", "op": "is_true"},
+          {"field": "data_minimisation_reviewed", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "data_inventory",
+          "kind": "SCAN_OUTPUT",
+          "optional": false,
+          "description_tr": "Alan düzeyinde kişisel veri envanteri",
+          "description_en": "Field-level personal data inventory"
+        }
+      ]
+    },
+    {
+      "rule_id": "KVKK-04-03",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 4",
+      "title_tr": "Saklama süresi tanımlı ve teknik olarak uygulanır olmalı",
+      "title_en": "Retention periods must be defined and technically enforced",
+      "description_tr": "Genel ilkeler, verinin ilgili mevzuatta öngörülen veya işlendiği amaç için gerekli olan süre kadar muhafaza edilmesini arar. Bu kontrol yazılı bir saklama takvimi ve bu takvimin teknik olarak uygulandığının kanıtını ister; yalnızca politika metni, silinmeyen veriyi silinmiş yapmaz.",
+      "description_en": "The general principles require data to be kept only for the period prescribed by law or necessary for the purpose. This control asks for a written retention schedule and evidence that it is technically enforced; a policy document alone does not delete data that is still there.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": "UNKNOWN — saklama süreleri veri kategorisine ve ilgili diğer mevzuata göre değişir; bu pakette süre sayısı TANIMLANMAMIŞTIR.",
+      "applicability": {"field": "processes_personal_data", "op": "is_true"},
+      "condition": {
+        "all": [
+          {"field": "retention_schedule_defined", "op": "is_true"},
+          {"field": "retention_enforced_technically", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "retention_policy",
+          "kind": "POLICY",
+          "optional": false,
+          "description_tr": "Saklama ve imha takvimi",
+          "description_en": "Retention and disposal schedule"
+        }
+      ]
+    },
+    {
+      "rule_id": "KVKK-04-04",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 4",
+      "title_tr": "Veri doğru ve güncel tutulmalı",
+      "title_en": "Data must be kept accurate and up to date",
+      "description_tr": "Genel ilkeler verinin doğru ve gerektiğinde güncel olmasını arar. Bu kontrol, düzeltme taleplerinin ve rutin güncelleme akışlarının tanımlı bir süreci olup olmadığına bakar.",
+      "description_en": "The general principles require data to be accurate and, where necessary, kept up to date. This control checks whether a defined process exists for correction requests and routine refresh of records.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "MEDIUM",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": null,
+      "applicability": {"field": "processes_personal_data", "op": "is_true"},
+      "condition": {"field": "accuracy_process_defined", "op": "is_true"},
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "accuracy_procedure",
+          "kind": "DOCUMENT",
+          "optional": false,
+          "description_tr": "Doğruluk ve güncelleme prosedürü",
+          "description_en": "Accuracy and update procedure"
+        }
+      ]
+    },
+    {
+      "rule_id": "KVKK-05-01",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 5",
+      "title_tr": "Her işleme faaliyeti için işleme şartı kayıtlı olmalı",
+      "title_en": "A processing condition must be recorded for every activity",
+      "description_tr": "İşleme şartları maddesi, kişisel verinin ancak sayılan şartlardan biri varsa işlenebileceğini düzenler. Bu kontrol, hangi faaliyetin hangi şarta dayandığının faaliyet bazında kayıtlı olmasını arar. Şirket düzeyinde tek bir genel beyan, faaliyet bazında dayanağı göstermez.",
+      "description_en": "The processing-conditions article provides that personal data may be processed only where one of the enumerated conditions applies. This control asks that the condition relied on be recorded per activity. A single company-wide statement does not show the basis for each activity.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "CRITICAL",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": null,
+      "applicability": {"field": "processes_personal_data", "op": "is_true"},
+      "condition": {
+        "all": [
+          {"field": "legal_basis_recorded", "op": "is_true"},
+          {"field": "legal_basis_per_activity", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "legal_basis_register",
+          "kind": "DOCUMENT",
+          "optional": false,
+          "description_tr": "Faaliyet–işleme şartı eşleştirme kaydı",
+          "description_en": "Activity-to-condition mapping register"
+        }
+      ]
+    },
+    {
+      "rule_id": "KVKK-06-01",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 6",
+      "title_tr": "Özel nitelikli veri için ayrı şart ve ek tedbir aranır",
+      "title_en": "Special-category data requires a distinct condition and additional measures",
+      "description_tr": "Özel nitelikli kişisel veriler ayrı bir rejime tabidir. Bu kontrol iki ayrı kaydı arar: hangi şarta dayanıldığı ve hangi ek teknik/idari tedbirlerin alındığı. Sıradan kişisel veri için yeterli olan bir dayanak, özel nitelikli veri için yeterli sayılmaz.",
+      "description_en": "Special categories of personal data are subject to a distinct regime. This control looks for two separate records: the condition relied upon, and the additional technical and organisational measures applied. A basis sufficient for ordinary personal data is not assumed sufficient here.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "CRITICAL",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {"field": "processes_special_category_data", "op": "is_true"}
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "special_category_condition_recorded", "op": "is_true"},
+          {"field": "special_category_safeguards", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "special_category_assessment",
+          "kind": "DOCUMENT",
+          "optional": false,
+          "description_tr": "Özel nitelikli veri değerlendirmesi ve ek tedbir kaydı",
+          "description_en": "Special-category assessment and additional-measures record"
+        }
+      ],
+      "notes_tr": "Bir alanın özel nitelikli sayılıp sayılmayacağı hukuki nitelendirmedir; keşif tarayıcısının ürettiği adaylar insan onayı olmadan kesin kabul edilmez."
+    },
+    {
+      "rule_id": "KVKK-10-01",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 10",
+      "title_tr": "Aydınlatma yükümlülüğü veri elde edilirken yerine getirilmeli",
+      "title_en": "The disclosure duty must be met at the time data is obtained",
+      "description_tr": "Aydınlatma yükümlülüğü maddesi, veri sorumlusunun ilgili kişiyi bilgilendirmesini öngörür. Bu kontrol iki ayrı olguyu arar: yayımlanmış bir aydınlatma metninin varlığı ve bu metnin verinin elde edildiği anda ilgili kişiye ulaştırıldığının kanıtı. Web sitesinde duran ama toplama anında gösterilmeyen bir metin, yükümlülüğü tek başına karşılamaz.",
+      "description_en": "The disclosure article requires the controller to inform the data subject. This control looks for two distinct facts: a published privacy notice, and evidence that it is delivered to the data subject at the moment data is collected. A notice that sits on a website but is never shown at collection does not, on its own, discharge the duty.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": null,
+      "applicability": {"field": "processes_personal_data", "op": "is_true"},
+      "condition": {
+        "all": [
+          {"field": "privacy_notice_published", "op": "is_true"},
+          {"field": "privacy_notice_delivered_at_collection", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "privacy_notice_document",
+          "kind": "NOTICE_TEXT",
+          "optional": false,
+          "description_tr": "Aydınlatma metni ve sunum kanıtı",
+          "description_en": "Privacy notice text and delivery evidence"
+        }
+      ]
+    },
+    {
+      "rule_id": "KVKK-11-01",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 11",
+      "title_tr": "İlgili kişi hakları için işleyen bir başvuru kanalı bulunmalı",
+      "title_en": "A working request channel must exist for data subject rights",
+      "description_tr": "İlgili kişi hakları maddesi, kişinin veri sorumlusuna başvurarak kullanabileceği hakları sayar. Bu kontrol, başvuruların alınabileceği tanımlı bir kanalın ve alınan başvuruların izlendiği bir kaydın varlığını arar. Yanıt süresi ve dayanağı bu pakette DOĞRULANMAMIŞTIR.",
+      "description_en": "The data subject rights article enumerates the rights an individual may exercise by applying to the controller. This control looks for a defined intake channel and a log in which received requests are tracked. The response deadline and its legal basis are NOT VERIFIED in this pack.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": "UNKNOWN — başvuruya yanıt süresi ve dayanak maddesi bu pakette DOĞRULANMAMIŞTIR; süre hesabı insan tarafından belirlenmelidir.",
+      "applicability": {"field": "processes_personal_data", "op": "is_true"},
+      "condition": {
+        "all": [
+          {"field": "data_subject_request_channel", "op": "is_true"},
+          {"field": "data_subject_request_log", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "dsr_procedure",
+          "kind": "DOCUMENT",
+          "optional": false,
+          "description_tr": "Başvuru alma ve yanıtlama prosedürü",
+          "description_en": "Request intake and response procedure"
+        }
+      ]
+    },
+    {
+      "rule_id": "KVKK-12-01",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 12",
+      "title_tr": "Veri güvenliğine ilişkin teknik ve idari tedbirler alınmalı",
+      "title_en": "Technical and organisational data security measures must be in place",
+      "description_tr": "Veri güvenliği maddesi, verinin hukuka aykırı işlenmesini ve erişilmesini önleyecek tedbirlerin alınmasını öngörür. Bu kontrol üç somut olguya bakar: yazılı güvenlik tedbirleri, durağan veride şifreleme ve uygulanan erişim denetimi. Verinin Türkiye dışında saklandığı beyan edilirse sonuç ne olursa olsun insan incelemesi tetiklenir — aktarım değerlendirmesi bu pakette MODELLENMEMİŞTİR.",
+      "description_en": "The data security article requires measures preventing unlawful processing of and access to personal data. This control examines three concrete facts: documented security measures, encryption at rest, and enforced access control. If data is declared to be stored outside Türkiye, human review is triggered regardless of the outcome — cross-border transfer is NOT MODELLED in this pack.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "CRITICAL",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": null,
+      "applicability": {"field": "processes_personal_data", "op": "is_true"},
+      "condition": {
+        "all": [
+          {"field": "security_measures_documented", "op": "is_true"},
+          {"field": "encryption_at_rest", "op": "is_true"},
+          {"field": "access_control_enforced", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [
+        {
+          "key": "data_stored_outside_turkey",
+          "predicate": {"field": "personal_data_stored_outside_turkey", "op": "is_true"},
+          "description_tr": "Veri yurt dışında saklanıyor; yurt dışına aktarım rejimi bu pakette modellenmemiştir (UNKNOWN) ve insan değerlendirmesi gerekir.",
+          "description_en": "Data is stored abroad; the cross-border transfer regime is not modelled in this pack (UNKNOWN) and requires human assessment."
+        }
+      ],
+      "evidence_requirements": [
+        {
+          "key": "security_policy",
+          "kind": "POLICY",
+          "optional": false,
+          "description_tr": "Teknik ve idari tedbirler dokümanı",
+          "description_en": "Technical and organisational measures document"
+        },
+        {
+          "key": "access_control_matrix",
+          "kind": "CONFIG_SNAPSHOT",
+          "optional": false,
+          "description_tr": "Rol/yetki matrisi ve uygulama kanıtı",
+          "description_en": "Role and permission matrix with enforcement evidence"
+        }
+      ]
+    },
+    {
+      "rule_id": "KVKK-12-02",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 12",
+      "title_tr": "Erişim ve işlem kayıtları tutulmalı ve değiştirilemez olmalı",
+      "title_en": "Access and activity logs must be kept and be tamper-evident",
+      "description_tr": "Veri güvenliği yükümlülüğünün ölçülebilir bir bileşeni, kimin hangi veriye eriştiğinin kayıt altına alınmasıdır. Bu kontrol kayıt tutmanın açık olmasını ve kayıtların sonradan sessizce değiştirilemeyeceğinin gösterilmesini arar. Değiştirilebilir bir kayıt, ihlal anında kanıt değeri taşımaz.",
+      "description_en": "A measurable component of the security duty is recording who accessed which data. This control asks that logging be enabled and that the logs be demonstrably tamper-evident. A log that can be edited silently carries no evidential weight at the moment it is needed.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "LOW",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": null,
+      "applicability": {"field": "processes_personal_data", "op": "is_true"},
+      "condition": {
+        "all": [
+          {"field": "audit_log_enabled", "op": "is_true"},
+          {"field": "audit_log_tamper_evident", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "audit_log_sample",
+          "kind": "LOG_EXPORT",
+          "optional": false,
+          "description_tr": "Kayıt örneği ve bütünlük doğrulama çıktısı",
+          "description_en": "Log sample and integrity verification output"
+        }
+      ],
+      "notes_tr": "Kayıt tutma yükümlülüğünün madde metnindeki kapsamı yorum gerektirir; bu yüzden güven düzeyi LOW."
+    },
+    {
+      "rule_id": "KVKK-16-01",
+      "legal_source_key": "kvkk-6698",
+      "article_ref": "m. 16",
+      "title_tr": "Sicil kaydı yükümlülüğü varsa yerine getirilmeli",
+      "title_en": "Registry enrolment must be completed where the obligation applies",
+      "description_tr": "Sicil maddesi, veri sorumluları siciline kayıt yükümlülüğünü düzenler. Bu kontrol yalnızca kaydın gerekli olduğu beyan edildiğinde uygulanır ve kaydın tamamlandığının kanıtını arar. Muafiyet iddiası, belgelenmiş olmadıkça kabul edilmez; muafiyetin dayanağı ve kapsamı bu pakette MODELLENMEMİŞTİR ve insan doğrulaması ister.",
+      "description_en": "The registry article governs enrolment in the controllers' registry. This control applies only where enrolment is declared to be required, and looks for evidence that it has been completed. A claimed exemption is not accepted unless documented; the basis and scope of any exemption are NOT MODELLED in this pack and require human verification.",
+      "official_source_url": "https://www.mevzuat.gov.tr/",
+      "authority": "Kişisel Verileri Koruma Kurumu",
+      "publication_date": "2016-04-07",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Istanbul",
+      "deadline_definition": "UNKNOWN — kayıt süreleri ikincil düzenlemelerle belirlenir ve bu pakette DOĞRULANMAMIŞTIR.",
+      "applicability": {
+        "all": [
+          {"field": "data_controller_in_turkey", "op": "is_true"},
+          {"field": "verbis_registration_required", "op": "is_true"}
+        ]
+      },
+      "condition": {"field": "verbis_registration_completed", "op": "is_true"},
+      "exceptions": [
+        {
+          "key": "documented_exemption",
+          "predicate": {"field": "verbis_exemption_documented", "op": "is_true"},
+          "description_tr": "Belgelenmiş muafiyet beyanı — dayanağı ve geçerliliği insan tarafından doğrulanmalıdır.",
+          "description_en": "Documented exemption claim — its basis and validity must be verified by a human."
+        }
+      ],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {
+          "key": "verbis_registration_record",
+          "kind": "ATTESTATION",
+          "optional": false,
+          "description_tr": "Sicil kayıt kanıtı",
+          "description_en": "Registry enrolment evidence"
+        }
+      ]
+    }
+  ]
+}

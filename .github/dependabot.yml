@@ -1,0 +1,83 @@
+version: 2
+
+# Security updates are opened immediately by GitHub regardless of the schedule
+# below; the schedule governs ordinary version bumps only.
+updates:
+  - package-ecosystem: pip
+    directory: /backend
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Europe/Istanbul
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - backend
+    commit-message:
+      prefix: "deps(backend)"
+    groups:
+      # One PR for the web stack: FastAPI, Starlette and uvicorn move together
+      # and splitting them produces PRs that cannot pass on their own.
+      web:
+        patterns:
+          - fastapi
+          - starlette
+          - uvicorn*
+          - python-multipart
+      data:
+        patterns:
+          - SQLAlchemy
+          - alembic
+          - pydantic*
+      dev-tooling:
+        dependency-type: development
+
+  - package-ecosystem: npm
+    directory: /frontend
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Europe/Istanbul
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - frontend
+    commit-message:
+      prefix: "deps(frontend)"
+    groups:
+      react:
+        patterns:
+          - react
+          - react-dom
+          - react-router-dom
+          - "@types/react*"
+      build-tooling:
+        patterns:
+          - vite
+          - "@vitejs/*"
+          - typescript
+          - tailwindcss
+          - postcss
+          - autoprefixer
+      types:
+        patterns:
+          - "@types/*"
+    ignore:
+      # Leaflet is pinned deliberately. react-leaflet was removed for licence
+      # reasons (Hippocratic-2.1) and the map screen now drives Leaflet's
+      # imperative API directly, so a major bump needs a human to re-check that
+      # code rather than a green tick.
+      - dependency-name: leaflet
+        update-types: [version-update:semver-major]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    labels:
+      - dependencies
+      - ci
+    commit-message:
+      prefix: "deps(ci)"

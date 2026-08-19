@@ -1,0 +1,732 @@
+{
+  "schema_version": "1.0",
+  "pack_key": "gdpr-core",
+  "version": "0.1.0-draft",
+  "status": "DRAFT",
+  "jurisdiction": "EU",
+  "regulation_code": "EU-2016-679",
+  "title_tr": "GDPR Çekirdek Kural Paketi (TASLAK)",
+  "title_en": "GDPR Core Rule Pack (DRAFT)",
+  "description_tr": "(AB) 2016/679 sayılı Tüzük'ün yerleşik madde başlıklarından türetilmiş, makine tarafından değerlendirilebilir kontrol kümesi. BU PAKET TASLAKTIR VE ONAYLI DEĞİLDİR. Kurallar tüzük metninin kendisi değil, başlıklarına dayanan operasyonel kontrollerdir. Her kural requires_human_review=true taşır; motor bu paketten asla otomatik COMPLIANT üretmez. Hukuki görüş yerine geçmez.",
+  "description_en": "Machine-evaluable control set derived from the well-established article headings of Regulation (EU) 2016/679. THIS PACK IS A DRAFT AND IS NOT APPROVED. The rules are operational controls informed by those headings, not the regulatory text itself. Every rule carries requires_human_review=true, so the engine never returns an automatic COMPLIANT from this pack. Not a substitute for legal advice.",
+  "requires_human_review": true,
+  "retrieved_date": "2026-08-18",
+
+  "context_keys": [
+    "processes_personal_data",
+    "establishment_in_eu",
+    "offers_goods_or_services_to_eu_subjects",
+    "monitors_behaviour_of_eu_subjects",
+    "processing_activities_inventoried",
+    "purposes_documented",
+    "field_level_inventory",
+    "data_minimisation_reviewed",
+    "retention_schedule_defined",
+    "retention_enforced_technically",
+    "accountability_documentation",
+    "compliance_review_frequency_months",
+    "legal_basis_recorded",
+    "legal_basis_per_activity",
+    "consent_withdrawal_mechanism",
+    "processes_special_category_data",
+    "special_category_condition_recorded",
+    "special_category_safeguards",
+    "data_subject_request_channel",
+    "data_subject_request_sla_days",
+    "data_subject_request_log",
+    "privacy_by_design_review",
+    "data_protection_by_default",
+    "uses_processors",
+    "processor_contracts_signed",
+    "subprocessor_authorisation_process",
+    "ropa_maintained",
+    "ropa_last_reviewed_months_ago",
+    "security_measures_documented",
+    "encryption_at_rest",
+    "encryption_in_transit",
+    "access_control_enforced",
+    "restore_testing_performed",
+    "breach_detection_process",
+    "breach_notification_procedure",
+    "breach_notification_deadline_hours",
+    "breach_subject_communication_procedure",
+    "high_risk_processing",
+    "dpia_completed",
+    "international_transfer",
+    "transfer_safeguard",
+    "transfer_impact_assessment"
+  ],
+
+  "legal_sources": [
+    {
+      "source_key": "eu-2016-679",
+      "version": "1",
+      "jurisdiction": "EU",
+      "regulation_code": "EU-2016-679",
+      "authority": "European Union (Official Journal)",
+      "title_tr": "(AB) 2016/679 sayılı Genel Veri Koruma Tüzüğü",
+      "title_en": "Regulation (EU) 2016/679 (General Data Protection Regulation)",
+      "official_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "language": "en",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "notes_tr": "Tüzük metni indirilmediği için source_hash bir REFERENCE_FINGERPRINT'tir; resmî metnin özeti DEĞİLDİR. Madde referansları yalnızca madde numarası düzeyindedir; fıkra ve bent numaraları bilinçli olarak yazılmamıştır.",
+      "notes_en": "The regulatory text was not retrieved, so source_hash is a REFERENCE_FINGERPRINT, NOT a digest of the official text. Article references are given at article level only; paragraph and point numbers are deliberately omitted."
+    }
+  ],
+
+  "rules": [
+    {
+      "rule_id": "GDPR-05-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 5",
+      "title_tr": "İşleme amaçları belirli ve kayıtlı olmalı",
+      "title_en": "Processing purposes must be specified and recorded",
+      "description_tr": "İlkeler maddesi, verinin belirli, açık ve meşru amaçlarla toplanmasını öngörür. Bu kontrol, işleme faaliyetlerinin envantere alınmış ve her birinin amacının yazılı olmasını arar.",
+      "description_en": "The principles article requires data to be collected for specified, explicit and legitimate purposes. This control looks for an inventory of processing activities with the purpose of each recorded in writing.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "processing_activities_inventoried", "op": "is_true"},
+          {"field": "purposes_documented", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "purpose_register", "kind": "DOCUMENT", "optional": false,
+         "description_tr": "Amaç kaydı", "description_en": "Purpose register"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-05-02",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 5",
+      "title_tr": "Veri, amaçla sınırlı ve ölçülü olmalı",
+      "title_en": "Data must be adequate, relevant and limited",
+      "description_tr": "İlkeler maddesi veri minimizasyonunu arar. Bu kontrol alan düzeyinde bir envanterin varlığını ve bu envanterin ölçülülük gözüyle gözden geçirilmiş olmasını ister; envantersiz bir minimizasyon iddiası doğrulanamaz.",
+      "description_en": "The principles article requires data minimisation. This control asks for a field-level inventory and a documented proportionality review of it; a minimisation claim without an inventory cannot be verified.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "field_level_inventory", "op": "is_true"},
+          {"field": "data_minimisation_reviewed", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "data_inventory", "kind": "SCAN_OUTPUT", "optional": false,
+         "description_tr": "Alan düzeyinde veri envanteri",
+         "description_en": "Field-level data inventory"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-05-03",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 5",
+      "title_tr": "Saklama süresi sınırlı ve uygulanır olmalı",
+      "title_en": "Storage must be limited and the limit enforced",
+      "description_tr": "İlkeler maddesi saklama sınırlamasını arar. Bu kontrol hem yazılı bir saklama takvimini hem de takvimin teknik olarak uygulandığını ister; politika metni tek başına veriyi silmez.",
+      "description_en": "The principles article requires storage limitation. This control asks for both a written retention schedule and technical enforcement of it; a policy document alone does not delete data.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": "UNKNOWN — saklama süreleri veri kategorisine ve diğer mevzuata göre değişir; bu pakette süre sayısı TANIMLANMAMIŞTIR.",
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "retention_schedule_defined", "op": "is_true"},
+          {"field": "retention_enforced_technically", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "retention_schedule", "kind": "POLICY", "optional": false,
+         "description_tr": "Saklama ve imha takvimi",
+         "description_en": "Retention and disposal schedule"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-05-04",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 5",
+      "title_tr": "Uyumluluk gösterilebilir olmalı (hesap verebilirlik)",
+      "title_en": "Compliance must be demonstrable (accountability)",
+      "description_tr": "İlkeler maddesi, veri sorumlusunun ilkelerle uyumu gösterebilmesini arar. Bu kontrol, uyumluluk dokümantasyonunun varlığını ve gözden geçirmenin en fazla on iki ayda bir yapılmasını ister. On iki ay, kanunda yazan bir süre değil, bu pakette seçilmiş bir kontrol eşiğidir.",
+      "description_en": "The principles article requires the controller to be able to demonstrate compliance. This control asks for accountability documentation and a review cadence of at most twelve months. Twelve months is a control threshold chosen in this pack, not a statutory period.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "MEDIUM",
+      "confidence": "LOW",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": "Kontrol eşiği: en fazla 12 ay. Bu süre PAKET TARAFINDAN SEÇİLMİŞTİR; tüzükte yazan bir süre değildir.",
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "accountability_documentation", "op": "is_true"},
+          {"field": "compliance_review_frequency_months", "op": "lte", "value": 12}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "accountability_pack", "kind": "DOCUMENT", "optional": false,
+         "description_tr": "Hesap verebilirlik dosyası",
+         "description_en": "Accountability documentation set"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-06-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 6",
+      "title_tr": "Her faaliyet için hukuka uygunluk dayanağı kayıtlı olmalı",
+      "title_en": "A lawful basis must be recorded for every activity",
+      "description_tr": "Hukuka uygunluk maddesi, işlemenin sayılan dayanaklardan en az birine oturmasını arar. Bu kontrol dayanağın faaliyet bazında kayıtlı olmasını ister. Rızaya dayanan bir işlemede geri alma mekanizmasının bulunmadığı beyan edilirse insan incelemesi tetiklenir.",
+      "description_en": "The lawfulness article requires processing to rest on at least one of the enumerated bases. This control asks that the basis be recorded per activity. If no withdrawal mechanism is declared, human review is triggered, since consent-based processing depends on it.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "CRITICAL",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "legal_basis_recorded", "op": "is_true"},
+          {"field": "legal_basis_per_activity", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [
+        {
+          "key": "no_consent_withdrawal_mechanism",
+          "predicate": {"field": "consent_withdrawal_mechanism", "op": "is_false"},
+          "description_tr": "Rıza geri alma mekanizması yok olarak beyan edildi; rızaya dayanan faaliyet varsa insan değerlendirmesi gerekir.",
+          "description_en": "No consent withdrawal mechanism declared; if any activity relies on consent, human assessment is required."
+        }
+      ],
+      "evidence_requirements": [
+        {"key": "legal_basis_register", "kind": "DOCUMENT", "optional": false,
+         "description_tr": "Faaliyet–dayanak eşleştirme kaydı",
+         "description_en": "Activity-to-basis mapping register"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-09-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 9",
+      "title_tr": "Özel kategorideki veri için ayrı koşul ve güvence aranır",
+      "title_en": "Special categories require a distinct condition and safeguards",
+      "description_tr": "Özel kategorideki kişisel veriler ayrı bir rejime tabidir. Bu kontrol hangi koşula dayanıldığının ve hangi ek güvencelerin uygulandığının ayrı ayrı kayıtlı olmasını arar.",
+      "description_en": "Special categories of personal data are subject to a distinct regime. This control asks that the condition relied upon and the additional safeguards applied be recorded separately.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "CRITICAL",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {"field": "processes_special_category_data", "op": "is_true"}
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "special_category_condition_recorded", "op": "is_true"},
+          {"field": "special_category_safeguards", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "special_category_assessment", "kind": "DOCUMENT", "optional": false,
+         "description_tr": "Özel kategori değerlendirmesi",
+         "description_en": "Special-category assessment"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-12-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 12",
+      "title_tr": "İlgili kişi talepleri süresi içinde yanıtlanmalı",
+      "title_en": "Data subject requests must be answered within the deadline",
+      "description_tr": "Şeffaflık ve talep yönetimi maddesi, taleplere gereksiz gecikme olmaksızın ve her hâlükârda bir ay içinde yanıt verilmesini öngörür. Bu kontrol üç olguya bakar: tanımlı bir başvuru kanalı, en fazla 30 günlük iç hizmet seviyesi ve tutulan bir talep kaydı. 30 gün, 'bir ay'ın takvim hesabı yerine kullanılan İHTİYATLI bir yaklaşımdır; uzatma koşulları bu pakette modellenmemiştir.",
+      "description_en": "The transparency and request-handling article requires a response without undue delay and in any event within one month. This control examines three facts: a defined intake channel, an internal service level of at most 30 days, and a request log. Thirty days is a CONSERVATIVE proxy for the calendar month; extension conditions are not modelled in this pack.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": "Bir ay (Art. 12). Motor kontrolü ihtiyatlı biçimde 30 gün ile ölçer; takvim ayı hesabı ve uzatma koşulları insan doğrulaması gerektirir.",
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "data_subject_request_channel", "op": "is_true"},
+          {"field": "data_subject_request_sla_days", "op": "lte", "value": 30},
+          {"field": "data_subject_request_log", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "dsr_procedure", "kind": "DOCUMENT", "optional": false,
+         "description_tr": "Talep karşılama prosedürü",
+         "description_en": "Request handling procedure"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-25-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 25",
+      "title_tr": "Tasarımdan ve varsayılandan veri koruma uygulanmalı",
+      "title_en": "Data protection by design and by default must be applied",
+      "description_tr": "Bu madde, koruma tedbirlerinin sisteme sonradan eklenmesini değil, tasarım aşamasında düşünülmesini ve varsayılan ayarların koruyucu olmasını arar. Kontrol, tasarım gözden geçirmesinin yapıldığını ve varsayılanların koruyucu olduğunu ayrı ayrı sorar; ikisi farklı şeylerdir.",
+      "description_en": "This article requires protection to be designed in rather than bolted on, and defaults to be protective. The control asks separately whether a design review took place and whether defaults are protective; these are two different facts.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "MEDIUM",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "privacy_by_design_review", "op": "is_true"},
+          {"field": "data_protection_by_default", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "design_review_record", "kind": "DECISION_RECORD", "optional": false,
+         "description_tr": "Tasarım gözden geçirme kaydı",
+         "description_en": "Design review record"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-28-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 28",
+      "title_tr": "İşleyenlerle yazılı sözleşme ve alt işleyen izni bulunmalı",
+      "title_en": "Written processor contracts and sub-processor authorisation must exist",
+      "description_tr": "İşleyen maddesi, işleme faaliyetinin yazılı bir sözleşmeye dayanmasını ve alt işleyen kullanımının izne bağlanmasını arar. Bu kontrol yalnızca işleyen kullanıldığı beyan edildiğinde uygulanır.",
+      "description_en": "The processor article requires processing to rest on a written contract and sub-processor engagement to be authorised. This control applies only where the use of processors is declared.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {"field": "uses_processors", "op": "is_true"}
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "processor_contracts_signed", "op": "is_true"},
+          {"field": "subprocessor_authorisation_process", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "processor_contracts", "kind": "CONTRACT", "optional": false,
+         "description_tr": "İşleyen sözleşmeleri listesi",
+         "description_en": "Register of processor contracts"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-30-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 30",
+      "title_tr": "İşleme faaliyetleri kaydı tutulmalı ve güncel olmalı",
+      "title_en": "Records of processing activities must be kept and current",
+      "description_tr": "Kayıt tutma maddesi, işleme faaliyetlerinin yazılı kaydını arar. Bu kontrol kaydın varlığını ve en fazla on iki ay önce gözden geçirilmiş olmasını ister; on iki ay bu pakette seçilmiş bir tazelik eşiğidir, tüzükte yazan bir süre değildir.",
+      "description_en": "The records article requires a written record of processing activities. This control asks that the record exist and have been reviewed within the last twelve months; twelve months is a freshness threshold chosen in this pack, not a statutory period.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": "Tazelik eşiği: en fazla 12 ay. PAKET TARAFINDAN SEÇİLMİŞTİR; tüzükte yazan bir süre değildir.",
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "ropa_maintained", "op": "is_true"},
+          {"field": "ropa_last_reviewed_months_ago", "op": "lte", "value": 12}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "ropa_document", "kind": "DOCUMENT", "optional": false,
+         "description_tr": "İşleme faaliyetleri kaydı",
+         "description_en": "Record of processing activities"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-32-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 32",
+      "title_tr": "İşlemenin güvenliği sağlanmalı",
+      "title_en": "Security of processing must be ensured",
+      "description_tr": "Güvenlik maddesi, riske uygun teknik ve idari tedbirleri arar. Bu kontrol beş somut olguya bakar: yazılı tedbirler, durağan ve aktarımdaki şifreleme, uygulanan erişim denetimi ve geri yükleme testinin yapılmış olması. Test edilmemiş bir yedek, kurtarma yeteneğinin kanıtı değildir.",
+      "description_en": "The security article requires technical and organisational measures appropriate to the risk. This control examines five concrete facts: documented measures, encryption at rest and in transit, enforced access control, and performed restore testing. An untested backup is not evidence of an ability to restore.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "CRITICAL",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "security_measures_documented", "op": "is_true"},
+          {"field": "encryption_at_rest", "op": "is_true"},
+          {"field": "encryption_in_transit", "op": "is_true"},
+          {"field": "access_control_enforced", "op": "is_true"},
+          {"field": "restore_testing_performed", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "security_policy", "kind": "POLICY", "optional": false,
+         "description_tr": "Güvenlik tedbirleri dokümanı",
+         "description_en": "Security measures document"},
+        {"key": "restore_test_result", "kind": "TEST_RESULT", "optional": false,
+         "description_tr": "Geri yükleme testi sonucu",
+         "description_en": "Restore test result"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-33-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 33",
+      "title_tr": "İhlal denetim otoritesine 72 saat içinde bildirilebilmeli",
+      "title_en": "Breaches must be notifiable to the authority within 72 hours",
+      "description_tr": "İhlal bildirimi maddesi, ihlalin farkına varılmasından itibaren 72 saat içinde denetim otoritesine bildirim öngörür. Bu kontrol, ihlali fark edecek bir tespit sürecinin, yazılı bir bildirim prosedürünün ve prosedürde tanımlı sürenin 72 saati aşmamasının birlikte bulunmasını arar; gecikmenin gerekçelendirilmesi bu pakette modellenmemiştir.",
+      "description_en": "The breach notification article requires notification to the supervisory authority within 72 hours of becoming aware. This control asks for a detection process, a written notification procedure, and an internal deadline of no more than 72 hours; justification of delay is not modelled in this pack.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "CRITICAL",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": "72 saat (Art. 33) — ihlalin farkına varılmasından itibaren. Gecikme gerekçesi ve istisnalar bu pakette modellenmemiştir.",
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {
+        "all": [
+          {"field": "breach_detection_process", "op": "is_true"},
+          {"field": "breach_notification_procedure", "op": "is_true"},
+          {"field": "breach_notification_deadline_hours", "op": "lte", "value": 72}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "breach_procedure", "kind": "DOCUMENT", "optional": false,
+         "description_tr": "İhlal müdahale ve bildirim prosedürü",
+         "description_en": "Breach response and notification procedure"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-34-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 34",
+      "title_tr": "Yüksek riskli ihlalde ilgili kişiye bildirim yapılabilmeli",
+      "title_en": "High-risk breaches must be communicable to data subjects",
+      "description_tr": "Bu madde, ihlalin ilgili kişinin hak ve özgürlükleri için yüksek risk taşıması hâlinde kişiye bildirim öngörür. Otoriteye bildirim ile kişiye bildirim ayrı yükümlülüklerdir; bu yüzden ayrı kural olarak modellenmiştir. Kontrol, hazırlanmış bir bildirim akışının varlığını arar.",
+      "description_en": "This article requires communication to the data subject where a breach is likely to result in a high risk to their rights and freedoms. Notifying the authority and communicating to the individual are separate obligations, hence separate rules. The control looks for a prepared communication path.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": "UNKNOWN — bu pakette sayısal bir süre TANIMLANMAMIŞTIR; yüksek risk değerlendirmesi insan kararıdır.",
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {
+            "any": [
+              {"field": "establishment_in_eu", "op": "is_true"},
+              {"field": "offers_goods_or_services_to_eu_subjects", "op": "is_true"},
+              {"field": "monitors_behaviour_of_eu_subjects", "op": "is_true"}
+            ]
+          }
+        ]
+      },
+      "condition": {"field": "breach_subject_communication_procedure", "op": "is_true"},
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "breach_communication_template", "kind": "DOCUMENT", "optional": false,
+         "description_tr": "İlgili kişiye bildirim şablonu ve akışı",
+         "description_en": "Data subject communication template and workflow"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-35-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 35",
+      "title_tr": "Yüksek riskli işleme için etki değerlendirmesi yapılmalı",
+      "title_en": "High-risk processing requires an impact assessment",
+      "description_tr": "Bu madde, yüksek risk doğurması muhtemel işlemeler için veri koruma etki değerlendirmesi öngörür. Kontrol yalnızca yüksek riskli işleme beyan edildiğinde uygulanır; riskin yüksek olup olmadığı hukuki ve teknik bir değerlendirmedir ve motor tarafından belirlenmez.",
+      "description_en": "This article requires a data protection impact assessment for processing likely to result in high risk. The control applies only where high-risk processing is declared; whether risk is high is a legal and technical judgement and is not decided by the engine.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "HIGH",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {"field": "high_risk_processing", "op": "is_true"}
+        ]
+      },
+      "condition": {"field": "dpia_completed", "op": "is_true"},
+      "exceptions": [],
+      "review_triggers": [],
+      "evidence_requirements": [
+        {"key": "dpia_document", "kind": "DPIA", "optional": false,
+         "description_tr": "Veri koruma etki değerlendirmesi",
+         "description_en": "Data protection impact assessment"}
+      ]
+    },
+    {
+      "rule_id": "GDPR-44-01",
+      "legal_source_key": "eu-2016-679",
+      "article_ref": "Art. 44-49",
+      "title_tr": "Yurt dışına aktarım bir güvenceye dayanmalı",
+      "title_en": "International transfers must rest on a safeguard",
+      "description_tr": "Uluslararası aktarım maddeleri, üçüncü ülkeye aktarımın belirli güvencelerden birine dayanmasını arar. Bu kontrol yalnızca aktarım beyan edildiğinde uygulanır; bildirilen güvence tanınan listede olmalı ve bir aktarım etki değerlendirmesi bulunmalıdır. İstisnaya (derogation) dayanıldığı beyan edilirse sonuç otomatik olarak insan incelemesine düşer, çünkü istisnaların uygulanabilirliği olaya özgüdür.",
+      "description_en": "The international transfer articles require transfers to a third country to rest on one of the recognised safeguards. This control applies only where a transfer is declared; the declared safeguard must be on the recognised list and a transfer impact assessment must exist. If a derogation is declared, the outcome falls to human review, because the availability of derogations is case-specific.",
+      "official_source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "authority": "European Union (Official Journal)",
+      "publication_date": "2016-05-04",
+      "effective_date": "2018-05-25",
+      "retrieved_date": "2026-08-18",
+      "severity": "CRITICAL",
+      "confidence": "MEDIUM",
+      "requires_human_review": true,
+      "timezone_rule": "Europe/Brussels",
+      "deadline_definition": null,
+      "applicability": {
+        "all": [
+          {"field": "processes_personal_data", "op": "is_true"},
+          {"field": "international_transfer", "op": "is_true"}
+        ]
+      },
+      "condition": {
+        "all": [
+          {
+            "field": "transfer_safeguard",
+            "op": "in",
+            "value": ["ADEQUACY", "SCC", "BCR", "CERTIFICATION", "CODE_OF_CONDUCT", "DEROGATION"]
+          },
+          {"field": "transfer_impact_assessment", "op": "is_true"}
+        ]
+      },
+      "exceptions": [],
+      "review_triggers": [
+        {
+          "key": "derogation_claimed",
+          "predicate": {"field": "transfer_safeguard", "op": "eq", "value": "DEROGATION"},
+          "description_tr": "İstisnaya dayanıldığı beyan edildi; uygulanabilirliği olaya özgüdür ve insan değerlendirmesi gerektirir.",
+          "description_en": "A derogation is claimed; its availability is case-specific and requires human assessment."
+        }
+      ],
+      "evidence_requirements": [
+        {"key": "transfer_assessment", "kind": "TRANSFER_IMPACT_ASSESSMENT", "optional": false,
+         "description_tr": "Aktarım etki değerlendirmesi ve güvence belgesi",
+         "description_en": "Transfer impact assessment and safeguard instrument"}
+      ]
+    }
+  ]
+}

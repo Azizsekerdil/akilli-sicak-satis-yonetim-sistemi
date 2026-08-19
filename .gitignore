@@ -1,0 +1,119 @@
+# ---------------------------------------------------------------------------
+# Secrets  (NEVER commit)
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+secrets/
+credentials/
+*secret*.json
+*credentials*.json
+.secrets.baseline
+
+# ---------------------------------------------------------------------------
+# Runtime data
+# ---------------------------------------------------------------------------
+backups/
+logs/
+data/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+reports/generated/
+uploads/
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+.hypothesis/
+
+# ---------------------------------------------------------------------------
+# Node / Frontend
+# ---------------------------------------------------------------------------
+node_modules/
+frontend/dist/
+frontend/dev-dist/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+
+# ---------------------------------------------------------------------------
+# Editors / OS
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------------------------------------------------
+# Misc
+# ---------------------------------------------------------------------------
+*.bak
+*.tmp
+.cache/
+tmp/
+
+# ---------------------------------------------------------------------------
+# Uyumluluk kanıtları / Compliance evidence
+# ---------------------------------------------------------------------------
+# Gerçek tarama çıktıları veritabanı yollarını ve alan adlarını içerir; bunlar
+# kurulumun kendi verisidir, kaynağın parçası değildir.
+# Real scan output describes the installation's own data, not the source.
+compliance/evidence/*.json
+
+# ---------------------------------------------------------------------------
+# Sunum ara çıktıları / Presentation intermediates
+# ---------------------------------------------------------------------------
+# Üretilen deste (docs/presentation/*.pdf|pptx|html) ve kaynak ekran
+# görüntüleri (docs/presentation/ekranlar/) BİLEREK depoda tutulur: zincirin
+# çıktısı, zincirin kendisiyle birlikte incelenebilir olmalıdır.
+# Yalnızca geçici üretim artıkları yok sayılır.
+docs/presentation/*.tmp
+docs/presentation/~$*

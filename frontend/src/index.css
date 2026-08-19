@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Numeric columns line up only with tabular figures. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.shell.300');
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.shell.400');
+    background-clip: content-box;
+  }
+
+  *:focus-visible {
+    outline: 2px solid theme('colors.brand.500');
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-shell-200 bg-white shadow-card;
+  }
+
+  .card-header {
+    @apply flex items-center justify-between gap-3 border-b border-shell-200 px-5 py-3.5;
+  }
+
+  .card-title {
+    @apply text-sm font-semibold text-shell-800;
+  }
+
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-lg px-3.5 py-2
+           text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800;
+  }
+  .btn-secondary {
+    @apply btn border border-shell-300 bg-white text-shell-700 hover:bg-shell-50;
+  }
+  .btn-ghost {
+    @apply btn text-shell-600 hover:bg-shell-100 hover:text-shell-900;
+  }
+  .btn-danger {
+    @apply btn bg-danger-600 text-white hover:bg-danger-700;
+  }
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-shell-300 bg-white px-3 py-2 text-sm
+           placeholder:text-shell-400 focus:border-brand-500 focus:outline-none
+           focus:ring-2 focus:ring-brand-500/20 disabled:bg-shell-50;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-shell-600;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-2xs font-semibold uppercase tracking-wide;
+  }
+  .badge-ok {
+    @apply badge bg-ok-50 text-ok-700;
+  }
+  .badge-warn {
+    @apply badge bg-warn-50 text-warn-700;
+  }
+  .badge-danger {
+    @apply badge bg-danger-50 text-danger-700;
+  }
+  .badge-info {
+    @apply badge bg-info-50 text-info-700;
+  }
+  .badge-muted {
+    @apply badge bg-shell-100 text-shell-600;
+  }
+
+  .table-wrap {
+    @apply w-full overflow-x-auto;
+  }
+  .table {
+    @apply w-full border-collapse text-sm;
+  }
+  .table thead th {
+    @apply sticky top-0 z-10 whitespace-nowrap border-b border-shell-200 bg-shell-50
+           px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-shell-500;
+  }
+  .table tbody td {
+    @apply border-b border-shell-100 px-4 py-2.5 text-shell-700;
+  }
+  .table tbody tr:hover {
+    @apply bg-shell-50/70;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden rounded bg-shell-200/70;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer
+           bg-gradient-to-r from-transparent via-white/60 to-transparent;
+  }
+}
+
+/* Leaflet needs an explicit height or the map collapses to zero. */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

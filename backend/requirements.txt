@@ -1,0 +1,49 @@
+# ===========================================================================
+#  Akıllı Sıcak Satış Yönetim Sistemi — backend runtime dependencies
+#  Smart Van Sales Management System — backend runtime dependencies
+#
+#  All packages are permissively licensed (MIT / BSD / Apache-2.0 / PSF).
+#  See THIRD_PARTY_NOTICES.md for the full ledger.
+#
+#  Versions are pinned exactly so a build is reproducible, and they are
+#  audited with `pip-audit -r requirements.txt` before every release. Every
+#  pin below was raised past a published advisory at least once; do not lower
+#  one without re-running that audit.
+# ===========================================================================
+
+# --- Web framework ---------------------------------------------------------
+fastapi==0.141.1                  # MIT
+# Pinned directly as well as through FastAPI: Starlette carried the request
+# path-normalisation, multipart-spooling and Range-header advisories, and the
+# fix landed in 1.x. Leaving it to transitive resolution once left the app on
+# 0.41.x behind a current FastAPI.
+starlette==1.6.0                  # BSD-3-Clause
+uvicorn[standard]==0.52.4         # BSD-3-Clause
+python-multipart==0.0.32          # Apache-2.0 (path traversal + DoS fixes)
+
+# --- Data / ORM ------------------------------------------------------------
+SQLAlchemy==2.0.52                # MIT
+alembic==1.18.2                   # MIT
+pydantic==2.13.4                  # MIT
+pydantic-settings==2.15.0         # MIT
+
+# --- Security --------------------------------------------------------------
+bcrypt==5.0.0                     # Apache-2.0
+PyJWT==2.13.0                     # MIT (critical-header + JWKS fixes)
+python-dotenv==1.2.3              # BSD-3-Clause
+
+# --- HTTP client (AI providers) --------------------------------------------
+httpx==0.28.1                     # BSD-3-Clause
+
+# --- Analytics -------------------------------------------------------------
+numpy==2.2.1                      # BSD-3-Clause
+pandas==2.2.3                     # BSD-3-Clause
+
+# --- Reporting / export ----------------------------------------------------
+openpyxl==3.1.5                   # MIT
+reportlab==4.2.5                  # BSD-3-Clause
+
+# --- Optional (feature-detected at runtime; system works without them) -----
+# ortools==9.11.4210              # Apache-2.0 — exact VRP solver
+# psycopg[binary]==3.2.3          # LGPL-3.0  — PostgreSQL driver (optional)
+# redis==5.2.1                    # MIT       — cache/queue (optional)

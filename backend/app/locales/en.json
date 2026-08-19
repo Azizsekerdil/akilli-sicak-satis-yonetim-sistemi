@@ -1,0 +1,184 @@
+{
+  "error": {
+    "app_error": "An error occurred while processing the request.",
+    "validation_error": "The submitted data is invalid.",
+    "not_found": "Record not found.",
+    "conflict": "This record already exists.",
+    "unauthorized": "You must sign in to perform this action.",
+    "forbidden": "You are not authorised to perform this action.",
+    "authentication_failed": "Authentication failed.",
+    "permission_denied": "You are not authorised to perform this action.",
+    "rate_limited": "Too many requests. Please slow down.",
+    "business_rule_violation": "Business rule violation.",
+    "insufficient_stock": "Insufficient stock.",
+    "credit_limit_exceeded": "Credit limit exceeded.",
+    "expired_lot": "Lot has passed its expiry date.",
+    "day_session_error": "Day session error.",
+    "reconciliation_error": "Reconciliation error.",
+    "ai_provider_error": "The AI service could not be reached.",
+    "ai_budget_exceeded": "AI budget exceeded.",
+    "unsafe_query": "Unsafe query rejected.",
+    "backup_error": "Backup error.",
+    "restore_error": "Restore error.",
+    "optimization_error": "Route optimisation failed.",
+    "internal": "An unexpected system error occurred.",
+    "http_error": "The request could not be processed."
+  },
+  "auth": {
+    "invalid_credentials": "Incorrect username or password.",
+    "account_inactive": "Your account is not active.",
+    "account_locked": "Your account is temporarily locked. Try again after: {until}",
+    "password_change_required": "You must change your password before continuing. Every other screen stays closed until the initial password is changed.",
+    "bootstrap_local_only": "The first-run account can only be used from the device the server runs on. Remote sign-in opens once you have changed the password there.",
+    "missing_token": "No session information found.",
+    "session_expired": "Your session has expired, please sign in again.",
+    "wrong_current_password": "Your current password is incorrect.",
+    "permission_denied": "You lack '{action}' permission on '{resource}'.",
+    "admin_required": "This action requires administrator privileges.",
+    "cannot_grant_higher_role": "You cannot assign a role above your own.",
+    "cannot_modify_higher_role": "You cannot modify a more privileged user.",
+    "cannot_grant_unheld": "You cannot grant '{permission}' which you do not hold.",
+    "login_success": "Signed in successfully.",
+    "logout_success": "Signed out."
+  },
+  "password": {
+    "too_short": "Password is too short.",
+    "needs_uppercase": "Password must contain at least one uppercase letter.",
+    "needs_lowercase": "Password must contain at least one lowercase letter.",
+    "needs_digit": "Password must contain at least one digit.",
+    "policy_failed": "Password does not meet the policy: {rules}",
+    "must_differ": "The new password must differ from the old one."
+  },
+  "token": {
+    "expired": "Session expired.",
+    "invalid": "Invalid session token.",
+    "wrong_type": "Wrong token type."
+  },
+  "user": {
+    "username_required": "Username is required.",
+    "username_taken": "The username '{username}' is already taken.",
+    "not_found": "User not found."
+  },
+  "role": {
+    "not_found": "Role '{code}' not found."
+  },
+  "product": {
+    "not_found": "Product not found.",
+    "sku_taken": "SKU '{sku}' is already in use.",
+    "not_sellable": "'{name}' is not available for sale.",
+    "invalid_uom": "Unit '{uom}' is not defined for this product.",
+    "discount_too_high": "Maximum discount for '{name}' is {max}%."
+  },
+  "stock": {
+    "insufficient": "Insufficient stock for '{product}'. Requested: {requested}, available: {available}",
+    "warehouse_not_found": "Warehouse not found.",
+    "lot_expired": "Lot '{lot}' expired on {expiry}.",
+    "lot_blocked": "Lot '{lot}' is blocked.",
+    "negative_not_allowed": "Negative stock is not permitted in this warehouse.",
+    "no_lot_available": "No suitable lot available for '{product}'.",
+    "count_already_approved": "This stock count has already been approved.",
+    "transfer_not_shippable": "This transfer cannot be shipped.",
+    "variance_detected": "Stock variance detected: {variance}"
+  },
+  "vehicle": {
+    "not_found": "Vehicle not found.",
+    "no_warehouse": "No warehouse is linked to this vehicle.",
+    "capacity_exceeded": "Vehicle capacity exceeded ({used}/{capacity}).",
+    "inactive": "Vehicle is not active."
+  },
+  "day": {
+    "already_open": "A day session is already open for this vehicle and salesperson.",
+    "not_open": "No open day session found.",
+    "already_closed": "The day session is already closed.",
+    "count_required": "A van stock count is required to close the day.",
+    "closed": "Day closed successfully."
+  },
+  "customer": {
+    "not_found": "Customer not found.",
+    "code_taken": "Customer code '{code}' is already in use.",
+    "blocked": "Customer '{name}' is blocked.",
+    "credit_limit_exceeded": "Credit limit exceeded for '{name}'. Limit: {limit}, balance: {balance}, order: {amount}",
+    "no_coordinates": "The customer has no GPS coordinates.",
+    "has_balance": "Customer '{name}' still has an open balance of {balance} and cannot be deleted.",
+    "contact_not_found": "Contact not found.",
+    "note_not_found": "Note not found."
+  },
+  "order": {
+    "not_found": "Order not found.",
+    "empty": "An order must contain at least one line.",
+    "already_delivered": "The order has already been delivered.",
+    "cancelled": "The order has been cancelled.",
+    "created": "Order created."
+  },
+  "sale": {
+    "not_found": "Sale not found.",
+    "already_posted": "The sale has already been posted.",
+    "cancelled": "The sale has been cancelled.",
+    "completed": "Sale completed.",
+    "cannot_cancel_paid": "A sale with recorded payments cannot be cancelled."
+  },
+  "invoice": {
+    "not_found": "Invoice not found.",
+    "already_paid": "The invoice is already paid.",
+    "cancelled": "The invoice has been cancelled."
+  },
+  "payment": {
+    "not_found": "Payment not found.",
+    "amount_positive": "The payment amount must be greater than zero.",
+    "over_allocation": "Allocated amount cannot exceed the payment amount.",
+    "recorded": "Payment recorded."
+  },
+  "return": {
+    "not_found": "Return not found.",
+    "quantity_exceeds_sale": "The returned quantity cannot exceed the sold quantity.",
+    "already_posted": "The return has already been posted."
+  },
+  "campaign": {
+    "not_found": "Campaign not found.",
+    "not_active": "The campaign is not active.",
+    "budget_exhausted": "The campaign budget is exhausted.",
+    "limit_reached": "The campaign usage limit has been reached."
+  },
+  "route": {
+    "not_found": "Route not found.",
+    "no_stops": "The route has no stops.",
+    "no_coordinates": "No customers with coordinates were found.",
+    "optimized": "Route optimised: {stops} stops, {distance} km",
+    "already_completed": "The route is already completed.",
+    "in_progress": "A route that is in progress cannot be deleted.",
+    "not_startable": "The route cannot be started in its current state ({status}).",
+    "stop_not_found": "Stop not found.",
+    "stop_completed": "A completed stop cannot be skipped."
+  },
+  "ai": {
+    "no_provider": "No AI provider is available.",
+    "all_failed": "All AI providers failed.",
+    "provider_disabled": "Provider '{provider}' is disabled.",
+    "no_api_key": "No API key configured for '{provider}'.",
+    "budget_exceeded": "Monthly AI budget exceeded ({spent}/{budget} USD).",
+    "connection_ok": "Connection successful ({latency} ms).",
+    "connection_failed": "Connection failed: {error}",
+    "sql_read_only": "Only read-only queries are permitted.",
+    "sql_forbidden": "This query was rejected for safety: {reason}",
+    "permission_required": "This action requires the '{level}' permission level.",
+    "approval_required": "This action requires user approval."
+  },
+  "backup": {
+    "started": "Backup started.",
+    "completed": "Backup completed: {file}",
+    "failed": "Backup failed: {error}",
+    "not_found": "Backup not found.",
+    "checksum_mismatch": "Backup verification failed — the file may be corrupt.",
+    "restore_completed": "Restore completed.",
+    "restore_failed": "Restore failed: {error}"
+  },
+  "common": {
+    "created": "Record created.",
+    "updated": "Record updated.",
+    "deleted": "Record deleted.",
+    "saved": "Saved.",
+    "ok": "OK",
+    "yes": "Yes",
+    "no": "No"
+  }
+}

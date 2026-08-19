@@ -1,0 +1,184 @@
+{
+  "error": {
+    "app_error": "İşlem sırasında bir hata oluştu.",
+    "validation_error": "Gönderilen veriler geçersiz.",
+    "not_found": "Kayıt bulunamadı.",
+    "conflict": "Bu kayıt zaten mevcut.",
+    "unauthorized": "Bu işlem için giriş yapmalısınız.",
+    "forbidden": "Bu işlem için yetkiniz yok.",
+    "authentication_failed": "Kimlik doğrulama başarısız.",
+    "permission_denied": "Bu işlem için yetkiniz yok.",
+    "rate_limited": "Çok fazla istek gönderildi. Lütfen biraz bekleyin.",
+    "business_rule_violation": "İş kuralı ihlali.",
+    "insufficient_stock": "Yetersiz stok.",
+    "credit_limit_exceeded": "Kredi limiti aşıldı.",
+    "expired_lot": "Son kullanma tarihi geçmiş parti.",
+    "day_session_error": "Gün oturumu hatası.",
+    "reconciliation_error": "Mutabakat hatası.",
+    "ai_provider_error": "Yapay zeka servisine ulaşılamadı.",
+    "ai_budget_exceeded": "Yapay zeka bütçesi aşıldı.",
+    "unsafe_query": "Güvenli olmayan sorgu reddedildi.",
+    "backup_error": "Yedekleme hatası.",
+    "restore_error": "Geri yükleme hatası.",
+    "optimization_error": "Rota optimizasyonu başarısız.",
+    "internal": "Beklenmeyen bir sistem hatası oluştu.",
+    "http_error": "İstek işlenemedi."
+  },
+  "auth": {
+    "invalid_credentials": "Kullanıcı adı veya şifre hatalı.",
+    "account_inactive": "Hesabınız aktif değil.",
+    "account_locked": "Hesabınız geçici olarak kilitlendi. Tekrar deneme: {until}",
+    "password_change_required": "Devam etmeden önce şifrenizi değiştirmelisiniz. İlk şifre değiştirilene kadar diğer ekranlar kapalıdır.",
+    "bootstrap_local_only": "İlk kurulum hesabı yalnızca sunucunun çalıştığı cihazdan kullanılabilir. Şifreyi bu cihazda değiştirdikten sonra uzaktan giriş açılır.",
+    "missing_token": "Oturum bilgisi bulunamadı.",
+    "session_expired": "Oturumunuzun süresi doldu, lütfen tekrar giriş yapın.",
+    "wrong_current_password": "Mevcut şifreniz hatalı.",
+    "permission_denied": "'{resource}' üzerinde '{action}' yetkiniz yok.",
+    "admin_required": "Bu işlem yönetici yetkisi gerektirir.",
+    "cannot_grant_higher_role": "Kendinizden üst bir rol atayamazsınız.",
+    "cannot_modify_higher_role": "Üst yetkili bir kullanıcıyı değiştiremezsiniz.",
+    "cannot_grant_unheld": "Sahip olmadığınız '{permission}' yetkisini veremezsiniz.",
+    "login_success": "Giriş başarılı.",
+    "logout_success": "Çıkış yapıldı."
+  },
+  "password": {
+    "too_short": "Şifre çok kısa.",
+    "needs_uppercase": "Şifre en az bir büyük harf içermeli.",
+    "needs_lowercase": "Şifre en az bir küçük harf içermeli.",
+    "needs_digit": "Şifre en az bir rakam içermeli.",
+    "policy_failed": "Şifre politikaya uymuyor: {rules}",
+    "must_differ": "Yeni şifre eskisiyle aynı olamaz."
+  },
+  "token": {
+    "expired": "Oturum süresi doldu.",
+    "invalid": "Geçersiz oturum bilgisi.",
+    "wrong_type": "Yanlış tür oturum bilgisi."
+  },
+  "user": {
+    "username_required": "Kullanıcı adı zorunludur.",
+    "username_taken": "'{username}' kullanıcı adı zaten kullanılıyor.",
+    "not_found": "Kullanıcı bulunamadı."
+  },
+  "role": {
+    "not_found": "'{code}' rolü bulunamadı."
+  },
+  "product": {
+    "not_found": "Ürün bulunamadı.",
+    "sku_taken": "'{sku}' stok kodu zaten kullanılıyor.",
+    "not_sellable": "'{name}' satışa kapalı.",
+    "invalid_uom": "'{uom}' birimi bu ürün için tanımlı değil.",
+    "discount_too_high": "'{name}' için maksimum iskonto %{max}."
+  },
+  "stock": {
+    "insufficient": "'{product}' için yetersiz stok. İstenen: {requested}, mevcut: {available}",
+    "warehouse_not_found": "Depo bulunamadı.",
+    "lot_expired": "'{lot}' partisinin son kullanma tarihi geçmiş ({expiry}).",
+    "lot_blocked": "'{lot}' partisi bloke edilmiş.",
+    "negative_not_allowed": "Bu depoda eksi stok kullanılamaz.",
+    "no_lot_available": "'{product}' için uygun parti bulunamadı.",
+    "count_already_approved": "Bu sayım zaten onaylanmış.",
+    "transfer_not_shippable": "Bu transfer sevk edilemez.",
+    "variance_detected": "Stok farkı tespit edildi: {variance}"
+  },
+  "vehicle": {
+    "not_found": "Araç bulunamadı.",
+    "no_warehouse": "Araca ait depo tanımlı değil.",
+    "capacity_exceeded": "Araç kapasitesi aşıldı ({used}/{capacity}).",
+    "inactive": "Araç aktif değil."
+  },
+  "day": {
+    "already_open": "Bu araç ve plasiyer için gün zaten açık.",
+    "not_open": "Açık bir gün oturumu bulunamadı.",
+    "already_closed": "Gün zaten kapatılmış.",
+    "count_required": "Gün kapanışı için araç sayımı gerekli.",
+    "closed": "Gün başarıyla kapatıldı."
+  },
+  "customer": {
+    "not_found": "Müşteri bulunamadı.",
+    "code_taken": "'{code}' müşteri kodu zaten kullanılıyor.",
+    "blocked": "'{name}' müşterisi bloke durumda.",
+    "credit_limit_exceeded": "'{name}' kredi limiti aşılıyor. Limit: {limit}, bakiye: {balance}, sipariş: {amount}",
+    "no_coordinates": "Müşterinin GPS koordinatı tanımlı değil.",
+    "has_balance": "'{name}' müşterisinin {balance} tutarında açık bakiyesi var; silinemez.",
+    "contact_not_found": "İlgili kişi bulunamadı.",
+    "note_not_found": "Not bulunamadı."
+  },
+  "order": {
+    "not_found": "Sipariş bulunamadı.",
+    "empty": "Sipariş en az bir satır içermelidir.",
+    "already_delivered": "Sipariş zaten teslim edilmiş.",
+    "cancelled": "Sipariş iptal edilmiş.",
+    "created": "Sipariş oluşturuldu."
+  },
+  "sale": {
+    "not_found": "Satış bulunamadı.",
+    "already_posted": "Satış zaten işlenmiş.",
+    "cancelled": "Satış iptal edilmiş.",
+    "completed": "Satış tamamlandı.",
+    "cannot_cancel_paid": "Tahsilatı yapılmış satış iptal edilemez."
+  },
+  "invoice": {
+    "not_found": "Fatura bulunamadı.",
+    "already_paid": "Fatura zaten ödenmiş.",
+    "cancelled": "Fatura iptal edilmiş."
+  },
+  "payment": {
+    "not_found": "Tahsilat bulunamadı.",
+    "amount_positive": "Tahsilat tutarı sıfırdan büyük olmalıdır.",
+    "over_allocation": "Dağıtılan tutar tahsilat tutarını aşamaz.",
+    "recorded": "Tahsilat kaydedildi."
+  },
+  "return": {
+    "not_found": "İade bulunamadı.",
+    "quantity_exceeds_sale": "İade miktarı satış miktarını aşamaz.",
+    "already_posted": "İade zaten işlenmiş."
+  },
+  "campaign": {
+    "not_found": "Kampanya bulunamadı.",
+    "not_active": "Kampanya aktif değil.",
+    "budget_exhausted": "Kampanya bütçesi tükendi.",
+    "limit_reached": "Kampanya kullanım limiti doldu."
+  },
+  "route": {
+    "not_found": "Rota bulunamadı.",
+    "no_stops": "Rotada durak yok.",
+    "no_coordinates": "Koordinatı olan müşteri bulunamadı.",
+    "optimized": "Rota optimize edildi: {stops} durak, {distance} km",
+    "already_completed": "Rota zaten tamamlanmış.",
+    "in_progress": "Devam eden rota silinemez.",
+    "not_startable": "Rota bu durumda başlatılamaz ({status}).",
+    "stop_not_found": "Durak bulunamadı.",
+    "stop_completed": "Tamamlanmış durak atlanamaz."
+  },
+  "ai": {
+    "no_provider": "Kullanılabilir yapay zeka sağlayıcısı yok.",
+    "all_failed": "Tüm yapay zeka sağlayıcıları başarısız oldu.",
+    "provider_disabled": "'{provider}' sağlayıcısı devre dışı.",
+    "no_api_key": "'{provider}' için API anahtarı tanımlı değil.",
+    "budget_exceeded": "Aylık AI bütçesi aşıldı ({spent}/{budget} USD).",
+    "connection_ok": "Bağlantı başarılı ({latency} ms).",
+    "connection_failed": "Bağlantı başarısız: {error}",
+    "sql_read_only": "Yalnızca okuma sorgularına izin verilir.",
+    "sql_forbidden": "Bu sorgu güvenlik nedeniyle reddedildi: {reason}",
+    "permission_required": "Bu işlem '{level}' yetki seviyesi gerektirir.",
+    "approval_required": "Bu işlem kullanıcı onayı gerektirir."
+  },
+  "backup": {
+    "started": "Yedekleme başlatıldı.",
+    "completed": "Yedekleme tamamlandı: {file}",
+    "failed": "Yedekleme başarısız: {error}",
+    "not_found": "Yedek bulunamadı.",
+    "checksum_mismatch": "Yedek doğrulaması başarısız — dosya bozulmuş olabilir.",
+    "restore_completed": "Geri yükleme tamamlandı.",
+    "restore_failed": "Geri yükleme başarısız: {error}"
+  },
+  "common": {
+    "created": "Kayıt oluşturuldu.",
+    "updated": "Kayıt güncellendi.",
+    "deleted": "Kayıt silindi.",
+    "saved": "Kaydedildi.",
+    "ok": "Tamam",
+    "yes": "Evet",
+    "no": "Hayır"
+  }
+}
